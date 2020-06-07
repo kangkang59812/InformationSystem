@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sm.dao.SelfDao">
+    <resultMap id="resultMap2" type="Staff">
+        <id property="id" column="id" javaType="Integer"/>
+        <result property="account" column="account"  javaType="String"/>
+        <result property="password" column="password" javaType="String"/>
+        <result property="status" column="status" javaType="String"/>
+        <result property="did" column="did" javaType="Integer"/>
+        <result property="name" column="name" javaType="String"/>
+        <result property="sex" column="sex" javaType="String"/>
+        <result property="idNumber" column="id_number" javaType="String"/>
+        <result property="workTime" column="work_time" javaType="java.util.Date"/>
+        <result property="leaveTime" column="leave_time" javaType="java.util.Date"/>
+        <result property="bornDate" column="born" javaType="java.util.Date"/>
+        <result property="info" column="info" javaType="String"/>
+        <association property="department" column="did" javaType="Department" select="com.sm.dao.DepartmentDao.selectById"/>
+    </resultMap>
+
+    <select id="selectByAccount" resultMap="resultMap2">
+         select * from staff where account=#{account}
+    </select>
+
+</mapper>
